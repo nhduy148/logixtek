@@ -1,0 +1,11 @@
+1. The application has two  screens
+•	Screen 1: display the product name, thumb image, original price and the highest price placed by user
+•	Screen 2: Open when user click on the product at screen 1 
+o	Has the one input box to allow user enter the price (must be higher than the current highest price) they want to buy this product. Please prefer image2 for other information.
+o	And when the user submit the price on the screen 2, other user will immediately see this action 
+
+2. Follow this link for coding convention  https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions 
+
+3. All functions must have unit test
+
+4. Please put your code into GitLab - http://logix-devops.southeastasia.cloudapp.azure.com/dev-pool/training-nguyen
