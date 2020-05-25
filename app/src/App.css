@@ -35,36 +35,60 @@ h2 {
   border: 1px solid #CCC;
 }
 
-.pagi {
+.pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto 50px;
+  list-style-type: none;
 }
 
-.pagi button {
-  padding: 5px 20px;
-  font-size: 14px;
-  background-color: bisque;
-  margin: 0 10px;
+.pagination-item {
+  font-size: 16px;
 }
 
-.details {
+.pagination-link {
+  padding: 10px 15px;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #CCC;
+  cursor: pointer;
+}
+
+.pagination-item.active .pagination-link,
+.pagination-item.current .pagination-link {
+  color: #FFF;
+  background-color: #007bff;
+  border: 1px solid #007bff;
+}
+
+.per-page {
+  text-align: right;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.per-page select,
+.per-page option {
+  padding: 5px 10px;
+}
+
+#details {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.details .product {
+#details .product {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.details .comments {
+#details .comment {
   margin-top: 50px;
 }
 
-.details .comment-item {
+#details .comment-item {
   display: flex;
   justify-content: center;
   align-items: center;

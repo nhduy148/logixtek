@@ -32,7 +32,7 @@ router.get('/item/:id', (req, res, next) => {
     res.json(item[0]);  
 });
 
-router.put('/item/:id', (req, res, next) => {    
+router.put('/item/:id', (req, res, next) => {  
     const ID = req.params.id;
     const clonedData = [...data]
     objIndex = clonedData.findIndex((obj => obj.id == ID));

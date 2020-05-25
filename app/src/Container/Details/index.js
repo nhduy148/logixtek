@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import CommentList from '../../Components/CommentList';
+import ProductDetail from '../../Components/ProductDetails';
+import Title from '../../Components/Title';
 
 export default function Details(props) {
   const [item, setItem] = useState(null);
@@ -30,35 +33,29 @@ export default function Details(props) {
     .then( res => res.json() )
     .then( result => {
       alert(result.statusText)
-      if( result.status === true ) getDetails(ID);
+      result.status === true && getDetails(ID);
     } )
     .catch( err => console.log(err) )
   }
+  
+  const comments = item ? [
+    { id: 1, user: "User 1", content: "Comment 1" },
+    { id: 2, user: "User 2", content: "Comment 2" },
+    { id: 3, user: "User 3", content: "Comment 3" }
+  ]
+  : []
 
-  return !!item
-  ? <div className="details">
-      <h2>Details: Product ID {item.id}</h2>
-      <div className="product">
-        <div className="image">
-          <img src={item.thumb} alt=""/>
-        </div>
-        <div className="info">
-          <p>Original price: {item.price}</p>
-          <p>Num of Bid: {item.num_of_bid}</p>
-          <p>Highest Price: {item.highest_price}</p>
-          <p>Bid date: {item.date}</p>
-          <form onSubmit={(e) => handleSubmit(e)} ><p>Bid: <input type="number" name="highest_price" /> <button type="submit">Submit</button></p></form>
-        </div>
-      </div>
-      <div className="comments">
-        <h2>Comments</h2>
-        <div className="comment-item">
-          User 1: Comment 1
-        </div>
-        <div className="comment-item">
-          User 2: Comment 2
-        </div>
-      </div>
-    </div>
-  : <p>Have problem!</p>
+  return (
+    <main id="details">
+      <section className="details">
+        <Title title={`Details: Product ID ${item && item.id ? item.id : "xxx"}`} />
+        <ProductDetail item={item} handleSubmit={handleSubmit} />
+      </section>
+      
+      <section className="comment">
+        <Title title="Comments" />
+        <CommentList comments={comments} />
+      </section>
+    </main>
+  )
 }
