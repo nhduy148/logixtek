@@ -39,7 +39,7 @@ router.get('/', (req, res, next) => {
     const newData = page === 1 ? [...data].splice(0, limit) : [...data].splice(skip, limit);
     
     res.json({
-        currentPage: page, totalPage: total_page, data: newData
+        totalPage: total_page, data: newData
     });  
 });
 

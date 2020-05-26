@@ -9,7 +9,7 @@ export default function Home({setDetailsID}) {
 
   const [limit, setLimit] = useState(5);
   const [page, setPage] = useState(1);
-  const sampleData = {currentPage: page, totalPage: 0, data: []}
+  const sampleData = {totalPage: 0, data: []}
   const [data, setData] = useState(sampleData);  
 
   useEffect(() => {
@@ -17,12 +17,12 @@ export default function Home({setDetailsID}) {
     .then( res => res.json() )
     .then( result => {
       setData(result);
-      if( result.totalPage < data.currentPage ) {
+      if( result.totalPage < page ) {
         setPage(1)
       }
     } )
     .catch( err => console.log(err) )
-  }, [page, limit, data.currentPage]);
+  }, [page, limit]);
 
   return (
     <main id="home">
@@ -31,7 +31,7 @@ export default function Home({setDetailsID}) {
       <List data={data.data} setDetailsID={setDetailsID} />
       <Pagination
         size={data.totalPage}
-        current={data.currentPage}
+        current={page}
         onPageChange={setPage}
       />
     </main>
