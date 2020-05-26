@@ -22,7 +22,7 @@ export default function Home({setDetailsID}) {
       }
     } )
     .catch( err => console.log(err) )
-  }, [page, limit, data.page]);
+  }, [page, limit, data.currentPage]);
 
   return (
     <main id="home">

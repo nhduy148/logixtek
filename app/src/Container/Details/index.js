@@ -21,6 +21,7 @@ export default function Details({detailsID, setDetailsID}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+        
     const data = { highest_price: e.target.highest_price.value }    
 
     fetch(`http://localhost:5000/item/${ID}`, {
