@@ -30,7 +30,7 @@ router.get('/', (req, res, next) => {
     const limit = parseInt(req.query.limit) || 6;
     const skip = limit * (page - 1);
     const total_data = data.length;
-    const total_page = Math.ceil(total_data / limit) || 1;
+    // const total_page = Math.ceil(total_data / limit) || 1;
     // const has_next_page = page + 1 <= total_page ? true : false;
     // const has_prev_page = page - 1 > 0 ? true : false;
     // const next_page = has_next_page ? page + 1 : null;
@@ -39,7 +39,7 @@ router.get('/', (req, res, next) => {
     const newData = page === 1 ? [...data].splice(0, limit) : [...data].splice(skip, limit);
     
     res.json({
-        totalPage: total_page, data: newData
+        totalItem: total_data, data: newData
     });  
 });
 

@@ -9,28 +9,29 @@ export default function Home({setDetailsID}) {
 
   const [limit, setLimit] = useState(5);
   const [page, setPage] = useState(1);
-  const sampleData = {totalPage: 0, data: []}
-  const [data, setData] = useState(sampleData);  
+  const sampleData = {totalItem: 0, data: []}
+  const [data, setData] = useState(sampleData);
+  const totalPage = Math.ceil(data.totalItem / limit );  
 
   useEffect(() => {
     fetch(`http://localhost:5000?page=${page}&limit=${limit}`)
     .then( res => res.json() )
-    .then( result => {
-      setData(result);
-      if( result.totalPage < page ) {
-        setPage(1)
-      }
-    } )
+    .then( result => setData(result) )
     .catch( err => console.log(err) )
   }, [page, limit]);
+
+  const setPerPage = number => {
+    setLimit(number);
+    setPage(1)
+  }
 
   return (
     <main id="home">
       <Title title="List Products" />
-      <PerPage size={limit} onChangePerPage={setLimit} />
+      <PerPage size={limit} onChangePerPage={setPerPage} />
       <List data={data.data} setDetailsID={setDetailsID} />
       <Pagination
-        size={data.totalPage}
+        size={totalPage}
         current={page}
         onPageChange={setPage}
       />
