@@ -1,9 +1,8 @@
 import React from 'react';
 
 export default function Item({item, onPageChange}) {
-  const router = {key: "details", props: { itemID: item.id }}
   return (
-    <div className="item" onClick={() => onPageChange(router)}>
+    <div className="item" onClick={() => onPageChange(item.id)}>
       <div className="thumb">
           <img src={item.thumb} alt=""/>
       </div>

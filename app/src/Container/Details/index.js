@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import CommentList from '../../Components/CommentList';
 import ProductDetail from '../../Components/ProductDetails';
 import Title from '../../Components/Title';
+import BackToHome from '../../Components/BackToHome';
 
-export default function Details({dataRouter}) {
+export default function Details({detailsID, setDetailsID}) {
   const [item, setItem] = useState(null);
-  const ID = dataRouter.itemID;
+  const ID = detailsID;
 
   useEffect(() => {
     getDetails(ID);
@@ -47,6 +48,7 @@ export default function Details({dataRouter}) {
 
   return (
     <main id="details">
+      <BackToHome onGoHome={setDetailsID}/>
       <section className="details">
         <Title title={`Details: Product ID ${item && item.id ? item.id : "xxx"}`} />
         <ProductDetail item={item} handleSubmit={handleSubmit} />
