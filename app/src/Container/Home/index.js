@@ -5,7 +5,8 @@ import Pagination from '../../Components/Pagination';
 import Title from '../../Components/Title';
 import PerPage from '../../Components/PerPage';
 
-export default function Home() {
+export default function Home({setRouter}) {
+
   const [limit, setLimit] = useState(5);
   const [page, setPage] = useState(1);
   const sampleData = {page: page, limit: limit, total_page: 0, has_next_page: false, has_prev_page: false, next_page: null, prev_page: null, data: []}
@@ -21,13 +22,13 @@ export default function Home() {
       }
     } )
     .catch( err => console.log(err) )
-  }, [page, limit]);
+  }, [page, limit, data.page]);
 
   return (
     <main id="home">
       <Title title="List Products" />
       <PerPage size={limit} onChangePerPage={setLimit} />
-      <List data={data.data} />
+      <List data={data.data} setRouter={setRouter} />
       <Pagination
         size={data.total_page}
         current={data.page}

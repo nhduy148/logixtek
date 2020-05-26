@@ -3,9 +3,9 @@ import CommentList from '../../Components/CommentList';
 import ProductDetail from '../../Components/ProductDetails';
 import Title from '../../Components/Title';
 
-export default function Details(props) {
+export default function Details({dataRouter}) {
   const [item, setItem] = useState(null);
-  const ID = props.match.params.id;
+  const ID = dataRouter.itemID;
 
   useEffect(() => {
     getDetails(ID);
